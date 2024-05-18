@@ -149,7 +149,7 @@ const booksRow = [
 
 const HomePageCarousel = () => {
   return (
-    <div className="w-full flex justify-center overflow-hidden">
+    <div className="w-full flex mt-5 justify-center overflow-hidden">
       <Carousel className="w-full  sm:max-w-xs md:max-w-[800px]">
         <CarouselContent className="-ml-1">
           {booksRow.map((item, index) => (

@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Catalog = () => {
   return (
-    <div className="px-6 mx-auto w-full flex flex-col md:flex-row gap-6 ">
+    <div className="px-6 mt-5 mx-auto w-full flex flex-col md:flex-row gap-6 ">
       <AspectRatio ratio={16 / 9}>
         <img
           src={favouriteBooks}
