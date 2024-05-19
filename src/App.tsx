@@ -5,6 +5,8 @@ import AuthCallBack from "./pages/AuthCallBack";
 import ProtectedRoute from "./auth/ProtectedRoute";
 import Profile from "./pages/Profile";
 import SellBook from "./pages/SellBook";
+import MyBooks from "./pages/MyBooks";
+import EditBook from "./pages/EditBook";
 
 const App = () => {
   return (
@@ -33,6 +35,22 @@ const App = () => {
           element={
             <Layout>
               <SellBook />
+            </Layout>
+          }
+        />
+        <Route
+          path="/my-books"
+          element={
+            <Layout>
+              <MyBooks />
+            </Layout>
+          }
+        />
+        <Route
+          path="/edit-book/:bookId"
+          element={
+            <Layout>
+              <EditBook />
             </Layout>
           }
         />

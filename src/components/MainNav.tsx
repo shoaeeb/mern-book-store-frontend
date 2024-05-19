@@ -48,6 +48,11 @@ const MainNav = () => {
             <Link to="/profile" className="hover:bg-blue-500  px-3">
               Profile
             </Link>
+            {isAuthenticated && (
+              <Link to="/my-books" className="hover:bg-blue-500">
+                My Books
+              </Link>
+            )}
           </div>
         </DialogContent>
       </Dialog>

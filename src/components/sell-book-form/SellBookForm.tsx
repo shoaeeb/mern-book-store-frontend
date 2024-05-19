@@ -7,34 +7,46 @@ import GenreSection from "./GenreSection";
 import CoverImage from "./CoverImageSection";
 import { Button } from "../ui/button";
 import LoadingButton from "../LoadingButton";
+import { BookType } from "@/types/types";
+import { useEffect } from "react";
 
 type Props = {
   onSubmit: (formData: FormData) => void;
   isLoading: boolean;
+  book?: BookType;
 };
 
-const formSchema = z.object({
-  title: z.string().min(2, "This field is required"),
-  author: z.string({
-    required_error: "This field is required",
-  }),
-  publicationYear: z.string({
-    required_error: "This field is required",
-  }),
-  description: z.string({
-    required_error: "This field is required",
-  }),
-  price: z.coerce.number({
-    required_error: "Price is required",
-    invalid_type_error: "must be a valid number",
-  }),
-  coverImage: z.instanceof(File, { message: "Image File is required" }),
-  genre: z.array(z.string()).nonempty("Atleast one genre is needed"),
-});
+const formSchema = z
+  .object({
+    title: z.string().min(2, "This field is required"),
+    author: z.string({
+      required_error: "This field is required",
+    }),
+    publicationYear: z.string({
+      required_error: "This field is required",
+    }),
+    description: z.string({
+      required_error: "This field is required",
+    }),
+    price: z.coerce.number({
+      required_error: "Price is required",
+      invalid_type_error: "must be a valid number",
+    }),
+    coverImage: z
+      .instanceof(File, { message: "Image File is required" })
+      .optional(),
+
+    coverImageUrl: z.string().optional(),
+    genre: z.array(z.string()).nonempty("Atleast one genre is needed"),
+  })
+  .refine((data) => data.coverImageUrl || data.coverImage, {
+    message: "Either coverImage or coverImageUrl is required",
+    path: ["coverImage"],
+  });
 
 export type SellBookFormType = z.infer<typeof formSchema>;
 
-const SellBookForm = ({ onSubmit, isLoading }: Props) => {
+const SellBookForm = ({ onSubmit, isLoading, book }: Props) => {
   const form = useForm<SellBookFormType>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -42,9 +54,27 @@ const SellBookForm = ({ onSubmit, isLoading }: Props) => {
     },
   });
 
+  useEffect(() => {
+    if (book) {
+      const formData = {
+        title: book.title,
+        price: Math.ceil(book.price / 100),
+        description: book.description,
+        author: book.author,
+        genre: book.genre,
+        coverImageUrl: book.coverImage,
+        publicationYear: book.publicationYear,
+      };
+      form.reset(formData);
+    }
+  }, [book, form.reset]);
+
   const onSave = (BookFormData: SellBookFormType) => {
     const formData = new FormData();
 
+    if (book) {
+      formData.append("id", book._id);
+    }
     formData.append("title", BookFormData.title);
     formData.append("author", BookFormData.author);
     formData.append("description", BookFormData.description);
@@ -53,7 +83,9 @@ const SellBookForm = ({ onSubmit, isLoading }: Props) => {
     BookFormData.genre.map((g: string, index: number) => {
       formData.append(`genre[${index}]`, g);
     });
-    formData.append("coverImage", BookFormData.coverImage);
+    if (BookFormData.coverImage) {
+      formData.append("coverImage", BookFormData.coverImage);
+    }
     onSubmit(formData);
   };
 

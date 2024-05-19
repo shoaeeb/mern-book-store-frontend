@@ -9,30 +9,34 @@ import {
 import { Input } from "../ui/input";
 
 const CoverImage = () => {
-  const { control } = useFormContext();
+  const { control, watch } = useFormContext();
+  const imageUrl = watch("coverImageUrl");
 
   return (
-    <FormField
-      control={control}
-      name="coverImage"
-      render={({ field }) => (
-        <FormItem>
-          <FormLabel>Cover Image</FormLabel>
-          <FormControl>
-            <Input
-              type="file"
-              accept=".jpg ,.jpeg, .png"
-              onChange={(event) =>
-                field.onChange(
-                  event.target.files ? event.target.files[0] : null
-                )
-              }
-            />
-          </FormControl>
-          <FormMessage />
-        </FormItem>
-      )}
-    />
+    <div className="w-full">
+      {imageUrl && <img src={imageUrl} height={"250px"} width={"350px"} />}
+      <FormField
+        control={control}
+        name="coverImage"
+        render={({ field }) => (
+          <FormItem>
+            <FormLabel>Cover Image</FormLabel>
+            <FormControl>
+              <Input
+                type="file"
+                accept=".jpg ,.jpeg, .png"
+                onChange={(event) =>
+                  field.onChange(
+                    event.target.files ? event.target.files[0] : null
+                  )
+                }
+              />
+            </FormControl>
+            <FormMessage />
+          </FormItem>
+        )}
+      />
+    </div>
   );
 };
 
