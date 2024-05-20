@@ -11,7 +11,12 @@ const PreviewBook = ({ book, isLoading }: Props) => {
   }
   return (
     <div className="w-full  flex justify-center ">
-      <img src={book.coverImage} alt={book.title} />
+      <img
+        height={"150px"}
+        width={"300px"}
+        src={book.coverImage}
+        alt={book.title}
+      />
     </div>
   );
 };

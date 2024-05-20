@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import SearchBar from "./SearchBar";
+import SearchBar, { SearchFormType } from "./SearchBar";
 import HeroCarousel from "./HeroCarousel";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const onSubmit = () => {
-    navigate("/search");
+  const onSubmit = (searchFormData:SearchFormType) => {
+    navigate(`/search/${searchFormData.query}`);
   };
   return (
     <div className="mx-auto px-6 py-10 flex bg-blue-400 h-[600px] items-center w-full">

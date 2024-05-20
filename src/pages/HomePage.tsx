@@ -6,14 +6,20 @@ import Testimonial from "@/components/Testimonial";
 const HomePage = () => {
   return (
     <div className="mx-auto mt-5 px-6">
-      <h1 className="text-center font-bold text-3xl">Best Seller Books</h1>
-      <HomePageCarousel />
+      <div className="hidden md:block">
+        <h1 className="text-center font-bold text-3xl">Best Seller Books</h1>
+        <HomePageCarousel />
+      </div>
       <Catalog />
       <Banner />
-      <h1 className="text-center font-bold text-3xl">Other Books</h1>
-      <HomePageCarousel />
-      <h1 className="text-center font-bold text-3xl">Testimonials</h1>
-      <Testimonial />
+      <div className="hidden md:block">
+        <h1 className="text-center font-bold text-3xl">Other Books</h1>
+        <HomePageCarousel />
+      </div>
+      <div className="hidden md:block">
+        <h1 className="text-center font-bold text-3xl">Testimonials</h1>
+        <Testimonial />
+      </div>
     </div>
   );
 };

@@ -7,6 +7,7 @@ import Profile from "./pages/Profile";
 import SellBook from "./pages/SellBook";
 import MyBooks from "./pages/MyBooks";
 import EditBook from "./pages/EditBook";
+import Search from "./pages/Search";
 
 const App = () => {
   return (
@@ -55,6 +56,14 @@ const App = () => {
           }
         />
       </Route>
+      <Route
+        path="/search/:query"
+        element={
+          <Layout>
+            <Search />
+          </Layout>
+        }
+      />
     </Routes>
   );
 };

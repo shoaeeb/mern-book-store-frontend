@@ -6,7 +6,7 @@ const Profile = () => {
   const { updateUser, isLoading: isUpdating } = useUpdateMyProfile();
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center items-center">Loading...</div>;
   }
   if (!CurrentUser) {
     return <span>Unable to load user profile...</span>;
