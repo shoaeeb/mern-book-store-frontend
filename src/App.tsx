@@ -8,6 +8,8 @@ import SellBook from "./pages/SellBook";
 import MyBooks from "./pages/MyBooks";
 import EditBook from "./pages/EditBook";
 import Search from "./pages/Search";
+import BookDetailPage from "./pages/BookDetailPage";
+import CheckOut from "./pages/CheckOut";
 
 const App = () => {
   return (
@@ -55,12 +57,28 @@ const App = () => {
             </Layout>
           }
         />
+        <Route
+          path="/checkout"
+          element={
+            <Layout>
+              <CheckOut />
+            </Layout>
+          }
+        />
       </Route>
       <Route
         path="/search/:query"
         element={
           <Layout>
             <Search />
+          </Layout>
+        }
+      />
+      <Route
+        path="/detail/:bookId"
+        element={
+          <Layout>
+            <BookDetailPage />
           </Layout>
         }
       />

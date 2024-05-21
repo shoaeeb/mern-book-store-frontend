@@ -4,7 +4,7 @@ import HeroCarousel from "./HeroCarousel";
 
 const Hero = () => {
   const navigate = useNavigate();
-  const onSubmit = (searchFormData:SearchFormType) => {
+  const onSubmit = (searchFormData: SearchFormType) => {
     navigate(`/search/${searchFormData.query}`);
   };
   return (
@@ -21,7 +21,9 @@ const Hero = () => {
           you want to read. Be part of the world&apos; largest community of book
           lovers on Good Reads
         </p>
-        <SearchBar onSubmit={onSubmit} placeholder="Search a book here" />
+        <div className="max-w-[300px]">
+          <SearchBar onSubmit={onSubmit} placeholder="Search a book here" />
+        </div>
       </div>
       <div className="flex-1   md:flex overflow-x-hidden hidden justify-center w-1/3">
         <HeroCarousel />

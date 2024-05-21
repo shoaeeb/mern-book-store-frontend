@@ -21,20 +21,20 @@ const SearchBar = ({ onSubmit, placeholder }: Props) => {
     resolver: zodResolver(formSchema),
   });
   return (
-    <div>
+    <div className="w-full">
       <Form {...form}>
         <form
-          className="flex flex-row gap-2"
+          className="flex flex-row gap-2 "
           onSubmit={form.handleSubmit(onSubmit)}
         >
           <FormField
             control={form.control}
             name="query"
             render={({ field }) => (
-              <FormItem>
+              <FormItem className="w-full">
                 <FormControl>
                   <Input
-                    className="border-none focus:outline-none focus:border-none border-b-slate-50"
+                    className="border border-slate-500 focus:outline-none focus:border-none "
                     placeholder={placeholder}
                     {...field}
                   />

@@ -22,7 +22,6 @@ const PaginationSelector = ({
   setPage,
   currentPage,
 }: Props) => {
-  console.log(hasPrevious);
   return (
     <Pagination>
       <PaginationContent>

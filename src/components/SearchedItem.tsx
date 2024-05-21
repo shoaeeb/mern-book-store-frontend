@@ -1,5 +1,5 @@
 import { BookType } from "@/types/types";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AspectRatio } from "./ui/aspect-ratio";
 import { useAuth0 } from "@auth0/auth0-react";
 import { Button } from "./ui/button";
@@ -9,7 +9,15 @@ type Props = {
 };
 
 const SearchedItem = ({ book }: Props) => {
-  const { isAuthenticated } = useAuth0();
+  const { pathname } = useLocation();
+  const { isAuthenticated, loginWithRedirect } = useAuth0();
+  const onLogin = async () => {
+    await loginWithRedirect({
+      appState: {
+        returnTo: pathname,
+      },
+    });
+  };
   return (
     <Link
       to={`/detail/${book._id}`}
@@ -30,7 +38,10 @@ const SearchedItem = ({ book }: Props) => {
             Add to Cart
           </Button>
         ) : (
-          <Button className="w-fit bg-blue-400 hover:bg-blue-300">
+          <Button
+            onClick={onLogin}
+            className="w-fit bg-blue-400 hover:bg-blue-300"
+          >
             Login To Add to Cart
           </Button>
         )}

@@ -18,9 +18,16 @@ const MainNav = () => {
       <Link to="/" className="hover:underline px-3">
         About
       </Link>
-      <Link to="/sell-book" className="hover:underline  px-3">
-        Sell Your Book
-      </Link>
+      {isAuthenticated && (
+        <Link to="/sell-book" className="hover:underline  px-3">
+          Sell Your Book
+        </Link>
+      )}
+      {isAuthenticated && (
+        <Link to="/checkout" className="hover:underline  px-3">
+          CheckOut
+        </Link>
+      )}
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger>{isAuthenticated ? user?.email : "Menu"}</DialogTrigger>

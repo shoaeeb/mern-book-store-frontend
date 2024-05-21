@@ -18,12 +18,24 @@ const MobileNav = () => {
       <Link to="/" className="hover:bg-blue-400 px-3 py-2 rounded-md">
         About
       </Link>
-      <Link to="/sell-book" className="hover:bg-blue-400 px-3 py-2 rounded-md">
-        Sell Your Book
-      </Link>
-      <Link to="/my-books" className="hover:bg-blue-400 px-3 py-2 rounded-md">
-        My Books
-      </Link>
+      {isAuthenticated && (
+        <Link
+          to="/sell-book"
+          className="hover:bg-blue-400 px-3 py-2 rounded-md"
+        >
+          Sell Your Book
+        </Link>
+      )}
+      {isAuthenticated && (
+        <Link to="/my-books" className="hover:bg-blue-400 px-3 py-2 rounded-md">
+          My Books
+        </Link>
+      )}
+      {isAuthenticated && (
+        <Link to="/checkout" className="hover:bg-blue-400 px-3 py-2 rounded-md">
+          Checkout
+        </Link>
+      )}
       {isAuthenticated && (
         <Button
           onClick={async () => logout()}

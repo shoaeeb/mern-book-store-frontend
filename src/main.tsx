@@ -6,6 +6,7 @@ import { Toaster } from "sonner";
 import { BrowserRouter } from "react-router-dom";
 import Auth0ProviderContext from "./auth/Auth0Provider.tsx";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { AppContextProvider } from "./Context/AppContextProvider.tsx";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,8 +21,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Auth0ProviderContext>
         <QueryClientProvider client={queryClient}>
-          <App />
-          <Toaster visibleToasts={1} position="top-right" richColors />
+          <AppContextProvider>
+            <App />
+            <Toaster visibleToasts={1} position="top-right" richColors />
+          </AppContextProvider>
         </QueryClientProvider>
       </Auth0ProviderContext>
     </BrowserRouter>
