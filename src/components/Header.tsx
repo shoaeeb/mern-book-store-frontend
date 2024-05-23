@@ -12,7 +12,7 @@ const Header = () => {
         <Link to="/">Bookly</Link>
       </div>
       {/* Main Nav */}
-      <div className="w-full hidden md:block">
+      <div className="w-full border hidden md:block">
         <MainNav />
       </div>
       {/* Mobile Nav */}

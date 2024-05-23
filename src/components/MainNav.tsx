@@ -25,7 +25,12 @@ const MainNav = () => {
       )}
       {isAuthenticated && (
         <Link to="/checkout" className="hover:underline  px-3">
-          CheckOut
+          Checkout
+        </Link>
+      )}
+      {isAuthenticated && (
+        <Link to="/order-status" className="hover:underline  px-3">
+          Order Status
         </Link>
       )}
 

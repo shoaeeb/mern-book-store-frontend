@@ -52,7 +52,10 @@ const BookDetails = ({ book }: Props) => {
       </Card>
       <div className="flex self-center">
         <Button
-          onClick={() => setQuantity((prev) => prev - 1)}
+          onClick={() => {
+            if (quantity == 1) return;
+            setQuantity((prev) => prev - 1);
+          }}
           className="bg-blue-500 hover:bg-blue-400 w-fit"
         >
           {" "}

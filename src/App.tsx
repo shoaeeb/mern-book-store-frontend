@@ -10,6 +10,7 @@ import EditBook from "./pages/EditBook";
 import Search from "./pages/Search";
 import BookDetailPage from "./pages/BookDetailPage";
 import CheckOut from "./pages/CheckOut";
+import OrderStatus from "./pages/OrderStatus";
 
 const App = () => {
   return (
@@ -30,6 +31,14 @@ const App = () => {
           element={
             <Layout>
               <Profile />
+            </Layout>
+          }
+        />
+        <Route
+          path="/order-status"
+          element={
+            <Layout>
+              <OrderStatus />
             </Layout>
           }
         />

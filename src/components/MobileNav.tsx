@@ -12,35 +12,49 @@ const MobileNav = () => {
       <h1 className="text-sm  text-center font-bold tracking-tight">
         {isAuthenticated && user?.email}
       </h1>
-      <Link to="/" className="hover:bg-blue-400  px-3 py-2 rounded-md">
+      <Link to="/" className="hover:bg-blue-400 text-sm  px-3 py-2 rounded-md">
         Home
       </Link>
-      <Link to="/" className="hover:bg-blue-400 px-3 py-2 rounded-md">
+      <Link to="/" className="hover:bg-blue-400 text-sm px-3 py-2 rounded-md">
         About
       </Link>
       {isAuthenticated && (
         <Link
           to="/sell-book"
-          className="hover:bg-blue-400 px-3 py-2 rounded-md"
+          className="hover:bg-blue-400  px-3 py-2 text-sm rounded-md"
         >
           Sell Your Book
         </Link>
       )}
       {isAuthenticated && (
-        <Link to="/my-books" className="hover:bg-blue-400 px-3 py-2 rounded-md">
+        <Link
+          to="/my-books"
+          className="hover:bg-blue-400 px-3 text-sm py-2 rounded-md"
+        >
           My Books
         </Link>
       )}
       {isAuthenticated && (
-        <Link to="/checkout" className="hover:bg-blue-400 px-3 py-2 rounded-md">
+        <Link
+          to="/checkout"
+          className="hover:bg-blue-400 px-3  text-sm py-2 rounded-md"
+        >
           Checkout
+        </Link>
+      )}
+      {isAuthenticated && (
+        <Link
+          to="/order-status"
+          className="hover:bg-blue-400 px-3 text-sm py-2 rounded-md"
+        >
+          Order Status
         </Link>
       )}
       {isAuthenticated && (
         <Button
           onClick={async () => logout()}
           disabled={isLoading}
-          className="text-lg font-normal bg-blue-500 text-black hover:bg-blue-400"
+          className="text-lg font-normal  bg-blue-500 text-black hover:bg-blue-400"
         >
           Logout
         </Button>
